@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { Database } = require('quickmongo');
-const quickmongo = new Database("mongodb+srv://chan:discord@database.vnkhz.mongodb.net/data")
+const quickmongo = new Database("mongodb+srv://ghosty:YwWdYLDQNWdXi12L@mao.iuwpxdz.mongodb.net/")
 const { attentionembed } = require('../../utils/embed');
 const config = require('../../config.json')
 

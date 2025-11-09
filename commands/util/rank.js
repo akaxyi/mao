@@ -3,7 +3,7 @@ const { attentionembed } = require('../../utils/embed');
 const Levels = require("discord-xp");
 const canvacord = require('canvacord');
 const { Database } = require('quickmongo');
-const quickmongo = new Database("mongodb+srv://chan:discord@database.vnkhz.mongodb.net/data")
+const quickmongo = new Database("mongodb+srv://ghosty:YwWdYLDQNWdXi12L@mao.iuwpxdz.mongodb.net/")
 
 module.exports.execute = async (client, message, args) => {
   const levelsCheck = await quickmongo.fetch(`levels-${message.guild.id}`);

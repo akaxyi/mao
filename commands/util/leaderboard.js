@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const { attentionembed } = require('../../utils/embed');
 const Levels = require("discord-xp");
-Levels.setURL("mongodb+srv://chan:discord@database.vnkhz.mongodb.net/data");
+Levels.setURL("mongodb+srv://ghosty:YwWdYLDQNWdXi12L@mao.iuwpxdz.mongodb.net/");
 const economy = require('../../models/economy');
 
 module.exports.execute = async (client, message, args) => {

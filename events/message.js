@@ -3,9 +3,9 @@ const { client, config } = require("../index.js");
 const { Collection, MessageEmbed } = require('discord.js')
 const cooldowns = new Collection();
 const Levels = require("discord-xp");
-Levels.setURL("mongodb+srv://chan:discord@database.vnkhz.mongodb.net/data");
+Levels.setURL("mongodb+srv://ghosty:YwWdYLDQNWdXi12L@mao.iuwpxdz.mongodb.net/");
 const { Database } = require('quickmongo');
-const quickmongo = new Database("mongodb+srv://chan:discord@database.vnkhz.mongodb.net/data")
+const quickmongo = new Database("mongodb+srv://ghosty:YwWdYLDQNWdXi12L@mao.iuwpxdz.mongodb.net/")
 
 client.on("message", async message => {
 

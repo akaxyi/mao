@@ -6,7 +6,7 @@ const ItemManager = require('./itemManager');
 class MongoClient extends Client {
     constructor() {
         super();
-        mongoose.connect('mongodb+srv://chan:discord@database.vnkhz.mongodb.net/data', {
+        mongoose.connect('mongodb+srv://ghosty:YwWdYLDQNWdXi12L@mao.iuwpxdz.mongodb.net/', {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
