@@ -1,5 +1,6 @@
 <h1 align="middle">Mao Discord Bot (Template)</h1>
-## Setup
+
+### Setup
 
 1. Copy `config.json.example` to `config.json` and fill in values:
 
