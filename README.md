@@ -1,7 +1,7 @@
 <h1 align="middle">Mao Discord Bot (Template)</h1>
 
-### Setup
-
+### Setup 
+### (WARNING THIS BOT IS VERY OUTDATED, IT USES VERY OLD SYNTAX. THIS REPO IS JUST USED TO HOLD THE FILES BECAUSE THIS WAS THE FIRST BOT I CREATED. ITS PRECIOUS TO ME)
 1. Copy `config.json.example` to `config.json` and fill in values:
 
    - `token`: Your Discord bot token
