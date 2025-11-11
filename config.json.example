@@ -1,0 +1,7 @@
+{
+  "token": "YOUR_DISCORD_BOT_TOKEN",
+  "ytToken": "YOUR_YOUTUBE_API_KEY",
+  "prefix": "-",
+  "PRUNING": false,
+  "mongoUri": "YOUR_MONGODB_CONNECTION_URI"
+}

@@ -1,35 +1,40 @@
 {
   "name": "mao",
   "version": "1.0.0",
-  "description": "<h1 align=\"middle\">Mao Discord Bot</h1>\r <p align=\"center\">\r   <a href=\"http://forthebadge.com/\">\r     <img src=\"http://forthebadge.com/images/badges/built-with-love.svg\"/>\r   </a>\r </p>",
+  "description": "",
+  "homepage": "https://github.com/akaxyi/mao#readme",
+  "bugs": {
+    "url": "https://github.com/akaxyi/mao/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akaxyi/mao.git"
+  },
+  "license": "MIT",
+  "author": "akaxyi",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "aki-api": "^7.0.1",
-    "canvacord": "^6.0.2",
+    "canvacord": "^6.0.4",
     "common-tags": "^1.8.2",
-    "discord-image-generation": "^1.4.25",
-    "discord-reply": "^0.1.2",
     "discord-xp": "^1.1.16",
     "discord-ytdl-core": "^5.0.4",
-    "discord.js": "^14.15.3",
+    "discord.js": "^14.24.2",
     "fs": "^0.0.1-security",
     "lyrics-finder": "^21.7.0",
     "moment": "^2.30.1",
-    "mongodb": "^6.8.0",
-    "mongoose": "^8.4.4",
+    "mongoose": "^8.19.3",
     "node-fetch": "^3.3.2",
-    "node-superfetch": "^0.3.4",
+    "node-superfetch": "^0.3.5",
     "path": "^0.12.7",
-    "pretty-ms": "^9.0.0",
+    "pretty-ms": "^9.3.0",
     "quickmongo": "^5.2.0",
     "random-puppy": "^1.1.0",
     "string-progressbar": "^1.0.4",
-    "youtube-sr": "^4.3.11"
+    "youtube-sr": "^4.3.12"
   }
 }

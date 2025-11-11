@@ -1,104 +1,110 @@
-const { Client } = require('discord.js');
-const mongoose = require('mongoose');
-const economy = require('../models/economy');
-const ItemManager = require('./itemManager');
+const { Client } = require("discord.js");
+const mongoose = require("mongoose");
+const economy = require("../models/economy");
+const ItemManager = require("./itemManager");
+const config = require("../config.json");
 
 class MongoClient extends Client {
-    constructor() {
-        super();
-        mongoose.connect('mongodb+srv://ghosty:YwWdYLDQNWdXi12L@mao.iuwpxdz.mongodb.net/', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        this.economy = economy;
-        this.items = new ItemManager();
+  constructor() {
+    super();
+    if (config.mongoUri) {
+      mongoose.connect(config.mongoUri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+    } else {
+      console.warn(
+        "[WARN] MONGODB connection string not set in config.json (mongoUri). Database features will be disabled."
+      );
     }
+    this.economy = economy;
+    this.items = new ItemManager();
+  }
 
-    /**
-     * 
-     * @param {string} userId - A discord user ID.
-     */
+  /**
+   *
+   * @param {string} userId - A discord user ID.
+   */
 
-    async fetchUser(userId) {
-        const someone = this.users.cache.get(userId);
-        if (!someone || someone.bot) return false;
-        const user = await economy.findOne({ userId: userId });
-        if (!user) {
-            const newUser = new economy({
-                userId: userId,
-                items: []
-            });
-            newUser.save();
-            return newUser;
-        }
-        return user;
+  async fetchUser(userId) {
+    const someone = this.users.cache.get(userId);
+    if (!someone || someone.bot) return false;
+    const user = await economy.findOne({ userId: userId });
+    if (!user) {
+      const newUser = new economy({
+        userId: userId,
+        items: [],
+      });
+      newUser.save();
+      return newUser;
     }
+    return user;
+  }
 
-    /**
-     * 
-     * @param {string} userId - A discord user ID.
-     * @param {number} amount - Amount of bank space to give.
-     */
+  /**
+   *
+   * @param {string} userId - A discord user ID.
+   * @param {number} amount - Amount of bank space to give.
+   */
 
-    async giveBankSpace(userId, amount) {
-        const someone = this.users.cache.get(userId);
-        if (!someone || someone.bot) return false;
-        let user = await economy.findOne({ userId: userId });
-        if (!user) {
-            const newUser = new economy({
-                userId: userId,
-                items: []
-            });
-            newUser.save();
-            return newUser;
-        }
-        user.bankSpace += parseInt(amount);
-        await user.save();
-        return user;
+  async giveBankSpace(userId, amount) {
+    const someone = this.users.cache.get(userId);
+    if (!someone || someone.bot) return false;
+    let user = await economy.findOne({ userId: userId });
+    if (!user) {
+      const newUser = new economy({
+        userId: userId,
+        items: [],
+      });
+      newUser.save();
+      return newUser;
     }
+    user.bankSpace += parseInt(amount);
+    await user.save();
+    return user;
+  }
 
-    /**
-     * 
-     * @param {string} userId - A discord user ID.
-     */
+  /**
+   *
+   * @param {string} userId - A discord user ID.
+   */
 
-    async createUser(userId) {
-        const someone = this.users.cache.get(userId);
-        if (!someone || someone.bot) return false;
-        const user = await economy.findOne({ userId: userId });
-        if (!user) return false;
-        const newUser = new economy({
-            userId: userId,
-            items: []
-        });
-        newUser.save();
-        return newUser;
+  async createUser(userId) {
+    const someone = this.users.cache.get(userId);
+    if (!someone || someone.bot) return false;
+    const user = await economy.findOne({ userId: userId });
+    if (!user) return false;
+    const newUser = new economy({
+      userId: userId,
+      items: [],
+    });
+    newUser.save();
+    return newUser;
+  }
+
+  /**
+   *
+   * @param {string} userId - A discord user ID.
+   * @param {number} amount - Amount of coins to give.
+   */
+
+  async giveCoins(userId, amount) {
+    const someone = this.users.cache.get(userId);
+    if (!someone || someone.bot) return false;
+    let user = await economy.findOne({ userId: userId });
+    if (!user) {
+      const newUser = new economy({
+        userId: userId,
+        items: [],
+        coinsInWallet: parseInt(amount),
+      });
+      newUser.save();
+      return newUser;
     }
-
-    /**
-     * 
-     * @param {string} userId - A discord user ID.
-     * @param {number} amount - Amount of coins to give.
-     */
-
-    async giveCoins(userId, amount) {
-        const someone = this.users.cache.get(userId);
-        if (!someone || someone.bot) return false;
-        let user = await economy.findOne({ userId: userId });
-        if (!user) {
-            const newUser = new economy({
-                userId: userId,
-                items: [],
-                coinsInWallet: parseInt(amount)
-            });
-            newUser.save();
-            return newUser;
-        }
-        user.coinsInWallet += parseInt(amount);
-        await user.save();
-        return user;
-    }
-
+    user.coinsInWallet += parseInt(amount);
+    await user.save();
+    return user;
+  }
 }
 
 module.exports = MongoClient;
